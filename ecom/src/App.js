@@ -1,16 +1,22 @@
-import logo from './logo.svg';
-import Home from "./componant/Home"
-import './App.css';
-import Cart from './componant/Cart';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-function App() {
+import GlobalState from "./context/GlobalState";
+import ProductsPage from "./pages/Products";
+import CartPage from "./pages/Cart";
+import "./App.css";
+
+const App = props => {
   return (
-    <>
-      Main
-      <Home/>
-      {/* <Cart/> */}
-    </>
+    <GlobalState>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={ProductsPage} exact />
+          <Route path="/cart" component={CartPage} exact />
+        </Switch>
+      </BrowserRouter>
+    </GlobalState>
   );
-}
+};
 
 export default App;

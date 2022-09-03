@@ -1,126 +1,104 @@
-import React from 'react'
+import React from "react";
 import { useState, useEffect } from "react";
 
 function Cart({item}) {
-  const [cart, setCart] = useState([]);
-  const [products, setProducts] = useState([]);
+  // const [c, setC] = useState(item);
+  
+  
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((products) => setProducts(products));
-  }, []);
-  let cnt =item.length;
+  // let cnt = cart.length;
+  console.log("hi shashwat")
+  console.log(item);
 
   return (
-    <div>Cart
+    <>
+      {/* <div>Cart
       <div className="App">
       <div>Items: {cnt}</div>
       {item.map((v, i) => (
         <div>
           <img src={v.image} alt="A vegetable." height="150" width="150" />
-          <div>{v.title}</div>
+          <div>{v.title}</div> */}
 
-          {/* <button>{v.cnt}</button> */}
-        </div>
+      {/* <button>{v.cnt}</button> */}
+      {/* </div>
       ))}
-      <hr />
-      {/* <div className="groceries">
-        {products.map((v, i) => (
-          <div>
-            <img src={v.image} alt="A vegetable." height="150" width="150" />
-            <div>{v.title}</div>
+  
+     
+    </div>
+    </div> */}
+      <div className="container my-3 ">
+        <nav class="navbar ">
+          <div class="container-fluid">
+            <h4 class="navbar-brand">
+              <i class="fa fa-arrow-left mx-3"></i>Continue Shopping
+            </h4>
+            <button class="btn btn-outline-success ">
+              <i class="fa fa-cart-arrow-down mx-1"></i>
+              {5}
+            </button>
           </div>
-        ))}
-      </div> */}
-    </div>
-    </div>
-  )
+        </nav>
+        <hr />
+        <br />
+        <div className="container">
+          <h4>Shopping Cart</h4>
+          <p>
+            You Have <span>{5}</span> items in Shoppng Cart
+          </p>
+
+           {item.map((v) => ( 
+            <>
+              <div className=" py-3">
+                <div class="d-flex justify-content-between  ">
+                  <div class="align-self-center">
+                    <img
+                      src={v.image}
+                      alt="timage"
+                      width="100px"
+                      height="100px"
+                    />
+                  </div>
+                  <div class="align-self-center ">
+                    <h5>{v.title}</h5>
+                    <p>hello</p>
+                   </div>
+                  <div class="align-self-center">
+                    <i class="fa fa-plus mx-3"></i>
+
+                    <button>5</button>
+
+                    <i class="fa fa-minus mx-3"></i>
+                  </div>
+                  <div class="align-self-center">
+                    <h4>{v.price}</h4>
+                  </div>
+                  
+                  <div class="align-self-center ">
+                    <i class="fa fa-trash mx-3 "></i>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </>
+          ))} 
+        
+
+          <div class="d-flex justify-content-end mx-3 py-3">
+            <h5>
+              Cart total: <span>2220rs</span>
+            </h5>
+          </div>
+          <div class="d-flex justify-content-end mx-3">
+            <button className="btn btn-outline-success btn-sm">
+              Check out
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Cart
-
-
-// import { useState, useEffect } from "react";
-
-
-// export default function App() {
-//   const [cart, setCart] = useState([]);
-//   const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("https://fakestoreapi.com/products")
-  //     .then((res) => res.json())
-  //     .then((products) => setProducts(products));
-  // }, []);
-
-//   function addToCart(i) {
-//     let item = products[i];
-//     item.cnt++;
-//     let notFound = true;
-//     for (let i = 0; i < cart.length; i++) {
-//       if (cart[i].title === item.title) {
-//         notFound = false;
-//         break;
-//       }
-//     }
-//     let copy = notFound ? [...cart, item] : [...cart];
-//     setCart(copy);
-//   }
-
-//   let cnt = cart.length;
-//   for (let i = 0; i < products.length; i++) {
-//     if (products[i].cnt > 0) {
-//       cnt++;
-//     }
-//   }
-//   return (
-    // <div className="App">
-    //   <div>Items: {cnt}</div>
-    //   {cart.map((v, i) => (
-    //     <div>
-    //       <img src={v.image} alt="A vegetable." height="150" width="150" />
-    //       <div>{v.title}</div>
-
-    //       {/* <button>{v.cnt}</button> */}
-    //     </div>
-    //   ))}
-    //   <hr />
-    //   <div className="groceries">
-    //     {products.map((v, i) => (
-    //       <div>
-    //         <img src={v.image} alt="A vegetable." height="150" width="150" />
-    //         <div>{v.title}</div>
-    //         <button onClick={() => addToCart(i)}>Add to Cart</button>
-    //       </div>
-    //     ))}
-    //   </div>
-
-//       {/* <table>
-//         <thead>
-//           <tr>
-//             <th>PostId</th>
-//             <th>Id</th>
-//             <th>Name</th>
-//             <th>Email</th>
-//             <th>Body</th>
-//           </tr>
-//         </thead> */}
-//       {/* {data.map((item) => {
-//           return (
-//             <tbody>
-//               <tr>
-//                 <td>{item.postId}</td>
-//                 <td>{item.id}</td>
-//                 <td>{item.name}</td>
-//                 <td>{item.email}</td>
-//                 <td>{item.body}</td>
-//               </tr>
-//             </tbody>
-//           );
-//         })} */}
-
-//       {/* </table> */}
-//     </div>
-//   );
-// }
+export default Cart;
